@@ -1,0 +1,42 @@
+.context-lorem{
+min-height: 100vh;
+padding: 0;
+background-color: #a5befa;
+}
+
+.content-lorem{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.img-main{
+width:350px;
+height:auto;
+margin-top: 15px;
+border-radius: 15px;
+margin-left: 28px;
+
+}
+
+
+div .info-main {
+    /* Add your styles here */
+    color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+div .h1-main {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+div .p-main {
+    color: #757171;
+    font-size: 16px;
+    line-height: 1.5;
+}
