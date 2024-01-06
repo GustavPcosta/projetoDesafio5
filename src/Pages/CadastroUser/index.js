@@ -4,7 +4,7 @@ import {useState} from 'react'
 
 import {Link, useNavigate}  from 'react-router-dom';
 function CadastroUser(){
-const [nome, setNome] = useState('');
+const [name, setNome] = useState('');
 const [email, setEmail] = useState('');
 const [senha, setSenha] = useState('');
 const [dataCadastro,setDataCadastro] = useState('');
@@ -14,12 +14,12 @@ const navigate = useNavigate();
 		
 
 		try {
-			if(!nome || !senha || !email || !dataCadastro){
+			if(!name || !senha || !email || !dataCadastro){
       			return;
     		}
 
-			const response = await axios.post('/usuario/save',{
-				nome:nome,
+			const response = await axios.post('/api/Usuarios',{
+				name:name,
 				email:email,
 				senha:senha,
 				dataCadastro:dataCadastro
@@ -67,8 +67,9 @@ const navigate = useNavigate();
 					/>
 
 					<input 
+					
 					className='input-register' 
-					type="number" name="cadastro" 
+					type="date" name="cadastro" 
 					placeholder="data do cadastro" required=""
 					onChange={(e) =>setDataCadastro(e.target.value)}
 					/>

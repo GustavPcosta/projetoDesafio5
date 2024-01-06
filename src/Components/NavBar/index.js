@@ -15,8 +15,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Contato from '../../Pages/Contato'
 import Promocao from '../../Pages/Promocao'
 
-const pages = ['Promoção', 'Contato', 'Destino'];
-const settings = ['Conta', 'Sair'];
+const pages = ['Promoção', 'Contato', 'Destino', 'listagem','usuarios'];
+const settings = ['', 'Sair'];
 
 
 

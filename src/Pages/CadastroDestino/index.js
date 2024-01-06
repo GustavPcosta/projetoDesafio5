@@ -8,32 +8,34 @@ import { useNavigate } from 'react-router-dom';
 
 const MultiStepForm = () => {
 
-  const[nome, setNome] = useState('')
+  const[name, setNome] = useState('')
   const [email, setEmail] = useState('');
   const [sobrenome, setSobrenome] = useState('');
-  const [pagamento, setPagamento] = useState('');
+  const [pagamento, setPagamento] = useState(false);
   const [estado, setEstado] = useState('');
   const [cep, setCep] = useState('')
-  const [numero_casa,setNumeroDaCasa] = useState('')
+  //const [numero_casa,setNumeroDaCasa] = useState('')
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
-
+  function handlInputChange(e){
+    setPagamento(e.target.checked);
+  }
   async function handlesubmit(e){
     e.preventDefault();
     
     try {
-      if(!nome || !email || !sobrenome || !pagamento || !estado || !cep ||!numero_casa){
+      if(!name || !email || !sobrenome || !pagamento || !estado || !cep){
         console.log('todos os campos devem ser preenchido')
       }
 
-      const response = await axios.post('/viagens/save',{
-        nome:nome,
+      const response = await axios.post('/api/Destinoes',{
+        name:name,
         sobrenome:sobrenome,
         pagamento:pagamento,
         estado:estado,
         cep:cep,
         email:email,
-        numero_casa:numero_casa
+        
       })
       if(response.data ===200){
 				console.log('usuário salvo')
@@ -95,10 +97,11 @@ const MultiStepForm = () => {
           onChange={(e) =>setEmail(e.target.value)}
           />
           <input 
-          type="text" 
+          type="checkbox" 
           name="pagamento" 
-          placeholder="Pagamento" 
-          onChange={(e) => setPagamento(e.target.value)}
+          placeholder="Pagamento"
+          checked={pagamento}
+          onChange={handlInputChange}
           />
           {/* <input type="text" name="gplus" placeholder="Google Plus" /> */}
           <input 
@@ -128,12 +131,12 @@ const MultiStepForm = () => {
           placeholder="Cep" 
           onChange={(e) =>setCep(e.target.value)}
           />
-           <input 
+           {/* <input 
            type="text" 
            name="text" 
            placeholder="Número da casa" 
            onChange={(e)=>setNumeroDaCasa(e.target.value)}
-           /> 
+           />  */}
           {/* <textarea name="address" placeholder="Address"></textarea> */}
           <input type="button" className="previous action-button" value="Voltar" onClick={handlePrevious} />
           <button  className="submit action-button" target="_top">Enviar</button>

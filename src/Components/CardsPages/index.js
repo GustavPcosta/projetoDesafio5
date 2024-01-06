@@ -2,6 +2,7 @@ import './style.css'
 import viagens from '../../assets/viagens-destino.jpg'
 import tarifas from '../../assets/tarifas.jpg'
 import comidas from '../../assets/comidas.jpg'
+import imgBackground from '../../assets/cadastro-travellers.jpg'
 import { Link } from 'react-router-dom';
 function Cards(){
     return(

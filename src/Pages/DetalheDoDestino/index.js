@@ -1,0 +1,75 @@
+import './style.css'
+import axios from '../../axios/axios'
+import { useState,useEffect } from 'react'
+import {useParams} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+
+function DetalheDestino(){
+    const [destino,setDestino] = useState([]);
+    let  {id} = useParams()
+
+    async function detalharDestino(){
+        try {
+            const response = await axios.get(`/api/Destinoes/${id}`)
+            setDestino(response.data)
+            console.log(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+
+
+    }
+    useEffect(()=>{
+        detalharDestino();
+    },[id])
+    return(
+        <div className='body-detalhe'>
+            <div className="height d-flex justify-content-center align-items-center">
+      <div className="card p-3">
+        <div className="d-flex justify-content-between align-items-center">
+          <div className="mt-2">
+            <h4 className="text-uppercase">Destino selecionado</h4>
+            <div className="mt-5">
+              <h5 className="text-uppercase mb-0">{destino.cep}</h5>
+              <h1 className="main-heading mt-0">{destino.name}</h1>
+              <div className="d-flex flex-row user-ratings">
+                <div className="ratings">
+                  <i className="fa fa-star"></i>
+                  <i className="fa fa-star"></i>
+                  <i className="fa fa-star"></i>
+                  <i className="fa fa-star"></i>
+                </div>
+                <h6 className="text-muted ml-1">4/5</h6>
+              </div>
+            </div>
+          </div>
+          <div className="image">
+            {/* <img
+              src="https://i.imgur.com/MGorDUi.png"
+              alt="Product"
+              width="200"
+            /> */}
+          </div>
+        </div>
+
+        <div className="d-flex justify-content-between align-items-center mt-2 mb-2">
+          <span>Avalie pela cor</span>
+          <div className="colors">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <p></p>
+
+      <Link to="/destino"><button className="btn btn-danger">Cadastro</button></Link>  
+      </div>
+    </div>
+        </div>
+    )
+}
+
+
+export default DetalheDestino
